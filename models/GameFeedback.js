@@ -1,9 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
+
 const sequelize = require('../config/connection');
 
-class User extends Model { }
+class GameFeedback extends Model {}
 
-User.init(
+GameFeedback.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,32 +12,28 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: DataTypes.STRING
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
-    },
     game_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "Game",
         key: "id"
       }
-    }    
+    },
+    feedback_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Feedback",
+        key: "id",
+      }
+    }
   },
-
   {
     sequelize,
     timestamps: true,
+    freezeTableName: true,
     underscored: true,
-    modelName: 'User'
+    modelName: "game_feedback", // THIS IS WHAT WILL BE DISPLAYED IN MYSQL
   }
 );
 
-module.exports = User;
+module.exports = GameFeedback;

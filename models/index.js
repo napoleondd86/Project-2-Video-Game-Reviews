@@ -1,23 +1,35 @@
-const Feedback = require('./Feedback');
 const Game = require('./Game');
 const User = require('./User');
+const Feedback = require('./Feedback');
+const GameFeedback = require('./GameFeedback');
 
+// User belongsTo Game
+User.belongsTo(Game, {
+  foreignKey: "game_id"
+})
+// Game have many User
+Game.hasMany(User, {
+  foreignKey: "game_id",
+  onDelete: "CASCADE",
+})
 
+// MANY - MANY OR JOIN/PIVOT TABLE
 User.belongsToMany(Game, {
   through: {
-    model: Feedback,
+    model: GameFeedback,
     unique: false
   },
-  as: 'TravLoco'
+  as: 'games' 
 })
 
-Game.belongsToMany(User, {
+Feedback.belongsToMany(User, {
   through: {
-    model: Feedback,
+    model: GameFeedback,
     unique: false
   },
-  as: 'LocoTrav'
+  as: 'users' 
 })
+//  END OF PIVOT TABLE
 
 module.exports = { User, Game, Feedback };
 
