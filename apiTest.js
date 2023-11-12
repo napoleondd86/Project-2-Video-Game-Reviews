@@ -1,6 +1,9 @@
 const body = document.getElementById("results");
+var search = "grand theft auto";
+var searchSlug = search.replaceAll(" ", "-");
 
-var searchResults = async () => fetch("https://api.rawg.io/api/games?key=bd8ac961089f4fb694db12c2ad50dfcb&search=harry-potter")
+
+var searchResults = async () => fetch(`https://api.rawg.io/api/games?key=bd8ac961089f4fb694db12c2ad50dfcb&search=${searchSlug}`)
 .then(function (response) {
   return response.json();
   
@@ -11,23 +14,23 @@ var searchResults = async () => fetch("https://api.rawg.io/api/games?key=bd8ac96
   results.forEach((game) => {
     // console.log(game);
     var resultsArray = [];
-    // var platforms = [];
-    // game.platforms.forEach((platform) => {
-    //   platforms.push(platform.name);
-    //   console.log(platform.slug)
-    // });
-    resultsArray.push({
+    var platformsArray = [];
+    game.platforms.forEach((platform) => {
+      platformsArray.push(platform.platform.name);
+    });
+    const results = {
       "title": game.name,
       "released": game.released,
-      // "platforms": platforms
-    });
-    console.log(resultsArray)
+      "platforms": platformsArray
+    };
+    const platString = platformsArray.join("/");
+    console.log(results)
     const gameName = document.createElement("h1");
-    const gameDate = document.createElement("p");
+    const gameData = document.createElement("p");
     gameName.textContent = game.name;
-    gameDate.textContent = game.released;
+    gameData.textContent = `${game.released} (${platString})`;
     body.appendChild(gameName);
-    body.appendChild(gameDate);
+    body.appendChild(gameData);
   }
     )
   })
