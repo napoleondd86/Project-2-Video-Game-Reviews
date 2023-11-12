@@ -1,3 +1,26 @@
+const Feedback = require('./Feedback');
+const Game = require('./Game');
+const User = require('./User');
+
+
+User.belongsToMany(Game, {
+  through: {
+    model: Feedback,
+    unique: false
+  },
+  as: 'TravLoco'
+})
+
+Game.belongsToMany(User, {
+  through: {
+    model: Feedback,
+    unique: false
+  },
+  as: 'LocoTrav'
+})
+
+module.exports = { User, Game, Feedback };
+
 /*SQL Relationships Part I:
 One - To - One OR One - To - Many
 ============================
