@@ -31,6 +31,7 @@ router.post("/", async (req, res) => {
     res.status(500).json({ status: "error", payload: err.message })
   }
 })
+
 // creating a new signup record
 router.post("/signup", (req, res) => {
   // save email and password info
