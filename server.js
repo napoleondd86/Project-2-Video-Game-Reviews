@@ -1,10 +1,8 @@
 const express = require("express");
 const app = express();
 
-// const session = require('express-session')
-// const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
-
+const session = require('express-session')
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const path = require("path");
 
@@ -26,9 +24,9 @@ future request to the same domain
 server is using
 
 Setting up session configuration, we could add others if we wanted to, but Gary says these settings should be good to go
-
+*/
 const sess  = {
-  secret:'gary doesnt know'
+  secret:'gary doesnt know',
   cookie: {
   // is this the standard
   maxAge: 1 * 24 * 60 * 60 * 1000, //expire after 1 day
@@ -42,7 +40,7 @@ const sess  = {
 
 // have session run
 app.use(session(sess));
-*/
+
 
 const PORT = process.env.PORT || 3001;
 
