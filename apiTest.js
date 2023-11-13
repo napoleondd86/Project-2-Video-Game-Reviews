@@ -21,9 +21,10 @@ var searchResults = async () => fetch(`https://api.rawg.io/api/games?key=bd8ac96
     const results = {
       "title": game.name,
       "released": game.released,
-      "platforms": platformsArray
+      "platforms": platformsArray,
+      "id": game.id
     };
-    const platString = platformsArray.join("/");
+    const platString = platformsArray.join(" / ");
     console.log(results)
     const gameName = document.createElement("h1");
     const gameData = document.createElement("p");
