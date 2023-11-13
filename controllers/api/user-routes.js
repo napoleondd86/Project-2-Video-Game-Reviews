@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Model = require("../../db/User")
+const Model = require("../../models")
 
 // using Model at the top instead of User to only change one line of code
 

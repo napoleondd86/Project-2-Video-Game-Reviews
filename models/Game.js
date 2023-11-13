@@ -24,7 +24,8 @@ Game.init(
     sequelize,
     timestamps: true,
     underscored: true,
-    modelName: 'Game'
+    freezeTableName: true,
+    modelName: 'game'
   }
 );
 
