@@ -33,7 +33,8 @@ Feedback.init({
     sequelize,
     timestamps: true,
     underscored: true,
-    modelName: 'Feedback'
+    freezeTableName: true,
+    modelName: 'feedback'
   },
 );
 

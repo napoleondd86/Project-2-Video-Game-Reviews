@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Game, User, Feedback, GameFeedback } = require('../models');
+const { Game, User } = require('../../models');
 
 //////////////////  JUST A TEMPLATE //////////////////////////
 ////////////////// PRETTY SURE WE DONT NEED ALL OF THESE ////////////
@@ -9,7 +9,10 @@ const { Game, User, Feedback, GameFeedback } = require('../models');
 // find all games
 router.get('/', async (req, res) => {
   try{
-    res.render("homepage");
+    const payload = await Game.findAll({
+      include: { model: User }, // THIS INCLUDES ASSOCIATED USER
+    });
+    res.status(200).json(payload);
   } catch (err) {
     res.status(500).json(err)
   }

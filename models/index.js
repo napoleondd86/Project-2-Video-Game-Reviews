@@ -31,7 +31,7 @@ Feedback.belongsToMany(User, {
 })
 //  END OF PIVOT TABLE
 
-module.exports = { User, Game, Feedback };
+module.exports = { User, Game, Feedback, GameFeedback };
 
 /*SQL Relationships Part I:
 One - To - One OR One - To - Many
