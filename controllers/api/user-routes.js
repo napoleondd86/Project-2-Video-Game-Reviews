@@ -31,6 +31,25 @@ router.post("/", async (req, res) => {
     res.status(500).json({ status: "error", payload: err.message })
   }
 })
+// creating a new signup record
+router.post("/signup", (req, res) => {
+  // save email and password info
+  const newUser = User.create(req.body)
+  req.session.save(() => {
+    // req.session is an object and We can place whatever we need in it.
+    if (!req.session.newUser) {
+      req.session = {
+        // making a copy of req.session as it already exists
+        ...req.session,
+        user: {
+          id: newUser.id
+        }
+      }
+    }
+    res.json({ status: 'success', msg: 'Congrats you are signed up' })
+  })
+})
+
 // Update a record with a pout
 router.put("/:id", async (req, res) => {
   try {
@@ -60,5 +79,21 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json({ status: "error", payload: err.message })
   }
 })
+
+/*
+async function sumbitSignup(){
+  // api/User/signup becasue it needs to go to a specific place.
+  const query = await fetch("api/User/signup", {
+    method: 'POST',
+    body: JSON.stringfy({
+      email: email,
+      password:password
+    }),
+    headers: {
+    'Content-Type': 'application/json'
+    };
+  });
+}
+*/
 
 module.exports = router;
