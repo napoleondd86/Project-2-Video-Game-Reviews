@@ -1,0 +1,30 @@
+<div class="game-card">
+  <h1>Game Page</h1>
+  <div class="game-card-header" data-game-id="{{firstGame.id}}">
+    {{firstGame.title}}
+  </div>
+  <div class="game-card-body">
+    <p>
+      Release Date:
+      {{firstGame.released}}
+    </p>
+    <p>
+      Release Platforms:
+      {{firstGame.platforms}}
+    </p>
+  </div>
+</div>
+<div>
+  <h2>Unblurred Feedback</h2>
+  <P>THIS IS WHERE WE WOULD DISPLAY THOSE CHARTS OF THE FEEDBACK WE HAVE COLLECTED THUS FAR</P>
+</div>
+<div>
+  <h2>Your Feedback</h2>
+  {{!-- DISPLAY USER FEEDBACK  --}}
+  {{!-- NEED TO DO ROUTES TO "CRUD" USER'S PERSONAL FEEDBACK --}}
+  {{#if logged_in}}
+  <P>THIS IS YOUR FEEDBACK ON THIS GAME</P>
+  {{else}}
+  <a href="/login">login</a>
+  {{/if}}
+</div>

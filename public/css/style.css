@@ -1,13 +1,27 @@
+* {
+  background-color: rgb(45, 50, 50);
+  color: white;
+  font-family: 'Tilt Neon', sans-serif;
+}
+/* 
+FONTS
+
+font-family: 'Orbitron', sans-serif;
+font-family: 'Share Tech Mono', monospace;
+ */
+
 header,
 main, 
 footer {
-  border: 2px solid red;
+  border: 2px solid #fe39a4;
   padding: 10px;
 }
 
 h1, h2 {
-  border: 2px solid orange;
+  border: 2px solid #fffdbb;
   padding: 10px;
+  color: #53e8d4;
+  text-align: center;
 }
 
 colors {
@@ -19,14 +33,37 @@ colors {
 
 }
 
+.btn-outline-success {
+  color: #53e8d4;
+  border-color: #53e8d4;
+}
+
+.btn-outline-success:hover {
+  background-color: #53e8d4;
+  border-color: #53e8d4;
+}
+
+a {
+  text-decoration: none;
+  color: #25c4f8;
+
+}
+
+.game-card-header:hover {
+  color: #25c4f8;
+}
+
+
+/* 
+// NEON ANIMATIONS AND GLOW
 .neonText {
   color: #fff;
   text-shadow:
-    /* White glow */
+    
     0 0 7px #fff,
     0 0 10px #fff,
     0 0 21px #fff,
-    /* Green glow */
+    
     0 0 42px #0fa,
     0 0 82px #0fa,
     0 0 92px #0fa,
@@ -53,4 +90,4 @@ colors {
 
 h1 {
   animation: flicker 1.5s infinite alternate;     
-}
+} */
