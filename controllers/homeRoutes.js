@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Game, User, Feedback, GameFeedback } = require('../models');
+const searchApi = require("../api-calls/searchApi")
 
 //////////////////  JUST A TEMPLATE //////////////////////////
 ////////////////// PRETTY SURE WE DONT NEED ALL OF THESE ////////////
@@ -21,14 +22,14 @@ router.get('/', async (req, res) => {
         req.session.countVisit = 1;
       }
       // I think this render is handled by handlebars? We really only need this bottom part to display countVisit
-      res.render('homepage', {
-        // (need to input the homepage api data or whatever we are planning here),
-        // We send over the current 'countVisit' session variable to be rendered
-        countVisit: req.session.countVisit,
+      // res.render('homepage', {
+      //   // (need to input the homepage api data or whatever we are planning here),
+      //   // We send over the current 'countVisit' session variable to be rendered
+      //   countVisit: req.session.countVisit,
 
-        // Checking to verify logged in status the loggedIn variable needs to match the other variable
-        loggedIn: req.session.loggedIn
-      });
+      //   // Checking to verify logged in status the loggedIn variable needs to match the other variable
+        // loggedIn: req.session.loggedIn
+      // });
 
     });
   }
@@ -36,6 +37,51 @@ router.get('/', async (req, res) => {
     res.status(500).json(err)
   }
 });
+
+// SEARCH PAGE ROUTE
+router.get("/search/:searched", async (req, res) => {
+  console.log("this is the search route")
+  try {
+    const gameList = await searchApi(req.params.searched);
+    console.log(gameList)
+    res.render("search", {gameList} )
+  } catch (err) {
+    res.status(500).json({ status: "error", payload: err.message })
+  }
+})
+
+router.get("/game/:id", async (req, res) => {
+  try {
+    const gameList = await searchApi(req.params.id);
+    console.log(gameList)
+    const firstGame = gameList[0];
+    res.render("game", {firstGame} )
+  } catch (err) {
+    res.status(500).json({ status: "error", payload: err.message })
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // find one game by its `id` value
 router.get('/:id', async (req, res) => {
