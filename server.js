@@ -81,7 +81,7 @@ async function sumbitSignup(){
 */
 
 
-// This is settinng force in the sync to false
+// This is setting force in the sync to false
 const okToSync = (process.env.NODE_ENV === "production") ? false : true;
 // this reseting the models using sequelize
 sequelize.sync({ force: okToSync }).then(() => {
