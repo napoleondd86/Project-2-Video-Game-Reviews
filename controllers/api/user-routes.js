@@ -31,6 +31,7 @@ router.post("/", async (req, res) => {
     res.status(500).json({ status: "error", payload: err.message })
   }
 })
+
 // creating a new signup record
 router.post("/signup", (req, res) => {
   // save email and password info
@@ -80,20 +81,5 @@ router.delete("/:id", async (req, res) => {
   }
 })
 
-/*
-async function sumbitSignup(){
-  // api/User/signup becasue it needs to go to a specific place.
-  const query = await fetch("api/User/signup", {
-    method: 'POST',
-    body: JSON.stringfy({
-      email: email,
-      password:password
-    }),
-    headers: {
-    'Content-Type': 'application/json'
-    };
-  });
-}
-*/
 
 module.exports = router;
