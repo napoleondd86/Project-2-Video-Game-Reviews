@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Game, User, Feedback, GameFeedback } = require('../models');
-const searchApi = require("../api-calls/searchApi")
+const { searchApi , gameApi } = require("../api-calls/searchApi")
 
 //////////////////  JUST A TEMPLATE //////////////////////////
 ////////////////// PRETTY SURE WE DONT NEED ALL OF THESE ////////////
@@ -52,9 +52,9 @@ router.get("/search/:searched", async (req, res) => {
 
 router.get("/game/:id", async (req, res) => {
   try {
-    const gameList = await searchApi(req.params.id);
-    console.log(gameList)
-    const firstGame = gameList[0];
+    const firstGame = await gameApi(req.params.id);
+    console.log(firstGame)
+    // const firstGame = gameList[0];
     res.render("game", {firstGame} )
   } catch (err) {
     res.status(500).json({ status: "error", payload: err.message })
