@@ -59,25 +59,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-// for session signing up on the front end
 
-async function sumbitSignup() {
-  // api/User/signup becasue it needs to go to a specific place.
-  const query = await fetch("api/User/signup", {
-    method: 'POST',
-    body: JSON.stringfy({
-      email: email,
-      password: password
-    }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
-  const result = await query.json()
-  if (result.status === 'success') {
-
-  }
-}
 
 
 // This is settinng force in the sync to false
