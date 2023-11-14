@@ -13,22 +13,22 @@
       <form action="/" method="post">
 
         <div class="top-row">
-        
-        <div class="field-wrap">
-          <label>
-            Email Address<span class="req">*</span>
-          </label>
-          <input type="email" required autocomplete="off" />
-        </div>
 
-        <div class="field-wrap">
-          <label>
-            Set A Password<span class="req">*</span>
-          </label>
-          <input type="password" required autocomplete="off" />
-        </div>
+          <div class="field-wrap">
+            <label for="username-signup">
+              Email Address<span class="req">*</span>
+            </label>
+            <input class="form-input" type="text" id="username-signup" />
+          </div>
 
-        <button type="submit" class="button button-block" />Get Started</button>
+          <div class="field-wrap">
+            <label for="password-signup">
+              Set A Password<span class="req">*</span>
+            </label>
+            <input class="form-input" type="password" id="password-signup" />
+          </div>
+
+          <button type="submit" class="button button-block" />Get Started</button>
 
       </form>
 
@@ -40,22 +40,22 @@
       <form action="/" method="post">
 
         <div class="field-wrap">
-          <label>
+          <label for="email-login">
             Email Address<span class="req">*</span>
           </label>
-          <input type="email" required autocomplete="off" />
+          <input class="form-input" type="text" id="email-login" />
         </div>
 
         <div class="field-wrap">
-          <label>
+          <label for="password-login">
             Password<span class="req">*</span>
           </label>
-          <input type="password" required autocomplete="off" />
+          <input class="form-input" type="password" id="password-login" />
         </div>
 
         <p class="forgot"><a href="#">Forgot Password?</a></p>
 
-        <button class="button button-block" />Log In</button>
+        <button class="button button-block" type="submit" />Log In</button>
 
       </form>
 
