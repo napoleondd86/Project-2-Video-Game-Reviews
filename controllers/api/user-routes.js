@@ -24,6 +24,7 @@ router.get("/:id", async (req, res) => {
 })
 // Creating a new record
 router.post("/", async (req, res) => {
+  console.log("hello!!!")
   try {
     const payload = await Model.create(req.body);
     res.status(200).json({ status: "nice", payload })
@@ -33,9 +34,10 @@ router.post("/", async (req, res) => {
 })
 
 // creating a new signup record
-router.post("/signup", (req, res) => {
+router.post("/signup", async (req, res) => {
+  console.log("signup")
   // save email and password info
-  const newUser = User.create(req.body)
+  const newUser = await User.create(req.body)
   req.session.save(() => {
     // req.session is an object and We can place whatever we need in it.
     if (!req.session.newUser) {
