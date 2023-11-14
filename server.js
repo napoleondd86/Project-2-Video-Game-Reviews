@@ -4,6 +4,8 @@ const app = express();
 const session = require('express-session')
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+
+
 const path = require("path");
 
 const routes = require("./controllers");
@@ -23,17 +25,17 @@ future request to the same domain
 6. In most cases, the session data is saved to whatever database the 
 server is using
 
-Setting up session configuration, we could add others if we wanted to, but Gary says these settings should be good to go
-*/
-const sess  = {
-  secret:'gary doesnt know',
-  cookie: {
-  // is this the standard
-  maxAge: 1 * 24 * 60 * 60 * 1000, //expire after 1 day
+Setting up session configuration, we could add others if we wanted to, but Gary says these settings should be good to go */
+
+const sess = {
+  secret: 'gary doesnt know',
+  cookies: {
+    // is this the standard
+    maxAge: 1 * 24 * 60 * 60 * 1000, //expire after 1 day
   },
   resave: false,
   saveUninitialized: true,
-   store: new SequelizeStore({
+  store: new SequelizeStore({
     db: sequelize,
   }),
 };
@@ -58,28 +60,27 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // for session signing up on the front end
-/*
-async function sumbitSignup(){
+
+async function sumbitSignup() {
   // api/User/signup becasue it needs to go to a specific place.
   const query = await fetch("api/User/signup", {
     method: 'POST',
     body: JSON.stringfy({
       email: email,
-      password:password
+      password: password
     }),
     headers: {
-    'Content-Type': 'application/json'
-    };
+      'Content-Type': 'application/json'
+    }
   });
   const result = await query.json()
-  if(result.status === 'success'){
-  (In here )
+  if (result.status === 'success') {
+
   }
 }
-*/
 
 
-// This is setting force in the sync to false
+// This is settinng force in the sync to false
 const okToSync = (process.env.NODE_ENV === "production") ? false : true;
 // this reseting the models using sequelize
 sequelize.sync({ force: okToSync }).then(() => {
