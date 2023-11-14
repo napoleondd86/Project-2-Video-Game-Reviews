@@ -47,7 +47,6 @@ app.use(session(sess));
 const PORT = process.env.PORT || 3001;
 
 // directs all routes to ./controllers directory
-app.use(routes);
 
 // Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
@@ -58,6 +57,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(routes);
 
 
 
