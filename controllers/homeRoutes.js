@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
         countVisit: req.session.countVisit,
 
         // Checking to verify logged in status the loggedIn variable needs to match the other variable
-        // loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn
       });
 
     });
