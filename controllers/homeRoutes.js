@@ -7,7 +7,7 @@ const searchApi = require("../api-calls/searchApi")
 
 // The `/api/games` endpoint
 
-// find all games
+// render homepage
 router.get('/', async (req, res) => {
   try {
     res.render("homepage");
