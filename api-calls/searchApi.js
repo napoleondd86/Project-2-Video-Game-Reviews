@@ -35,4 +35,22 @@ async function searchApi(query) {
 return resultsArray;
 }
 
-module.exports = searchApi;
+
+const gameId = 19487;
+
+async function gameApi(query) {
+  const response = await fetch(`https://api.rawg.io/api/games/${query}?key=bd8ac961089f4fb694db12c2ad50dfcb`)
+const data = await response.json();
+  console.log(data)
+  var platformsArray = [];
+  data.platforms.forEach((platform) => {
+    platformsArray.push(platform.platform.name);
+  });
+  var platString = platformsArray.join(", ");
+  data.platString = platString;
+
+return data
+
+}
+
+module.exports = { searchApi, gameApi };

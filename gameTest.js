@@ -6,7 +6,7 @@ const subtitle = document.createElement("h3");
 const descrip = document.createElement("p");
 const tags = document.getElementById("tags");
 
-var gamePage = () => fetch(`https://api.rawg.io/api/games/${gameId}?key=bd8ac961089f4fb694db12c2ad50dfcb`)
+var gamePage = (id) => fetch(`https://api.rawg.io/api/games/${id}?key=bd8ac961089f4fb694db12c2ad50dfcb`)
   .then(function (response) {
     return response.json();
   
@@ -27,4 +27,4 @@ var gamePage = () => fetch(`https://api.rawg.io/api/games/${gameId}?key=bd8ac961
     description.appendChild(descrip);
   })
 
-gamePage();
+gamePage(gameId);
