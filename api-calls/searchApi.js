@@ -43,11 +43,17 @@ async function gameApi(query) {
 const data = await response.json();
   console.log(data)
   var platformsArray = [];
+  var tagsArray = [];
   data.platforms.forEach((platform) => {
     platformsArray.push(platform.platform.name);
   });
+  data.tags.forEach((tag) => {
+    tagsArray.push(tag.name);
+  });
   var platString = platformsArray.join(", ");
   data.platString = platString;
+  var tagString = tagsArray.join(", ");
+  data.tagString = tagString;
 
 return data
 

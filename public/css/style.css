@@ -61,6 +61,13 @@ a {
 #logout:hover {
   color: #0a58ca
 }
+
+.small-data {
+  display: flex; 
+  justify-content: space-evenly;
+  padding-top: 20px;
+}
+
 /* 
 // NEON ANIMATIONS AND GLOW
 .neonText {
