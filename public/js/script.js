@@ -1,8 +1,12 @@
 const search = document.getElementById("searchBar");
 const searchTerm = document.getElementById("query");
+// const logo = document.querySelector("")
 
 const searchFunction = () => {
-  const query = searchTerm.value;
+  let query = searchTerm.value;
+  if (!query) {
+    query = "-"
+  } 
   console.log("submitted");
   console.log(query);
   const querySlug = query.replaceAll(" ", "-");

@@ -1,8 +1,10 @@
 const logOut = async () => {
+  console.log("logout post")
   const response = await fetch('/api/users/logout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
+  console.log("inside logout post")
 
   if (response.ok) {
     document.location.replace('/');
@@ -11,7 +13,7 @@ const logOut = async () => {
   }
 };
 
-document.querySelector('#logout').addEventListener('click', logout);
+document.querySelector('#logout')?.addEventListener('click', logOut);
 // This is code I found for logging out
 // async function logOut() {
 //   const response = await fetch('/api/users/logout', {

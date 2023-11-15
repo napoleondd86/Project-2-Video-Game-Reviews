@@ -53,7 +53,14 @@ a {
   color: #25c4f8;
 }
 
+#logout {
+  border: none;
+  color: #25c4f8;
+}
 
+#logout:hover {
+  color: #0a58ca
+}
 /* 
 // NEON ANIMATIONS AND GLOW
 .neonText {
