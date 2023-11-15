@@ -63,7 +63,7 @@ app.use(routes);
 
 
 // This is settinng force in the sync to false
-const okToSync = (process.env.NODE_ENV === "production") ? false : true;
+const okToSync = (process.env.NODE_ENV === "production") ? false : false;
 // this reseting the models using sequelize
 sequelize.sync({ force: okToSync }).then(() => {
   // this is starting the express server

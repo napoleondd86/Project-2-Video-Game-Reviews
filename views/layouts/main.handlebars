@@ -34,15 +34,15 @@
     <nav class="navbar bg-body-tertiary">
       <div class="container">
         {{!-- LOGO --}}
-        <a class="navbar-brand" href="#">
-          <img src="/images/logo1.svg" alt="Unblurrd Logo" width="120" height="100">
+        <a class="navbar-brand" href="http://localhost:3001">
+          <img src="/images/logo3.png" alt="Unblurrd Logo" width="120" height="100">
         </a>
         {{!-- SEARCHBAR --}}
         <form class="d-flex" role="search"  id="searchBar">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="query">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-        {{#if logged_in}}
+        {{#if loggedIn}}
         <a href="/profile">profile</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
@@ -102,6 +102,7 @@
   <!-- JQUERY -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="/js/login.js"></script>
+  <script src="/js/logout.js"></script>
   <script src="/js/script.js"></script>
 </body>
 

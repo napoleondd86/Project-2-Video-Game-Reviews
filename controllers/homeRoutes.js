@@ -10,7 +10,7 @@ const { searchApi , gameApi } = require("../api-calls/searchApi")
 // render homepage
 router.get('/', async (req, res) => {
   try {
-    res.render("homepage");
+    res.render("homepage", {loggedIn: req.session?.loggedIn});
     // This should start a session count for user visit (do we need this? taken from MVC #15)
     req.session.save(() => {
       // We set up a session variable to count the number of times we visit the homepage
@@ -44,7 +44,7 @@ router.get("/search/:searched", async (req, res) => {
   try {
     const gameList = await searchApi(req.params.searched);
     console.log(gameList)
-    res.render("search", {gameList} )
+    res.render("search", {gameList, loggedIn: req.session?.loggedIn} )
   } catch (err) {
     res.status(500).json({ status: "error", payload: err.message })
   }
@@ -55,7 +55,7 @@ router.get("/game/:id", async (req, res) => {
     const firstGame = await gameApi(req.params.id);
     console.log(firstGame)
     // const firstGame = gameList[0];
-    res.render("game", {firstGame} )
+    res.render("game", {firstGame, loggedIn: req.session?.loggedIn} )
   } catch (err) {
     res.status(500).json({ status: "error", payload: err.message })
   }
