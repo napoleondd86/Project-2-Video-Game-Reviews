@@ -2,29 +2,6 @@ const router = require("express").Router();
 const {User} = require("../../models");
 
 
-
-// using Model at the top instead of User to only change one line of code
-
-
-// get all records
-router.get("/", async (req, res) => {
-  try {
-    const payload = await User.findAll();
-    res.status(200).json({ status: "nice", payload })
-  } catch (err) {
-    res.status(500).json({ status: "error", payload: err.message })
-  }
-})
-// Get one record by pk
-router.get("/:id", async (req, res) => {
-  try {
-    const payload = await User.findbyPk(req.params.id);
-    res.status(200).json({ status: "nice", payload })
-  } catch (err) {
-    res.status(500).json({ status: "error", payload: err.message })
-  }
-})
-
 // THIS IS THE LOGOUT
 router.post("/logout", (req, res) => {
   console.log("hello!!!")
@@ -65,13 +42,14 @@ router.post("/login", async (req, res) => {
         // making a copy of req.session as it already exists 
         res.json({ status: 'success', msg: 'Congrats you are signed IN' })
       }     
-    )
-  } catch (err) {
-    res.status(404).json({ status: "error", payload: err.message })
-  }
+      )
+    } catch (err) {
+      res.status(404).json({ status: "error", payload: err.message })
+    }
 })
-
-// creating a new signup record
+  
+  
+// THIS IS A SIGNUP
 router.post("/signup", async (req, res) => {
   try{
     const newUser = await User.create(req.body)
@@ -85,7 +63,7 @@ router.post("/signup", async (req, res) => {
         req.session.loggedIn = true;
         req.session.user_id = newUser.id;
         req.session.user_email = newUser.email;
-       
+        
         console.log(req.session)     
         // making a copy of req.session as it already exists 
         res.status(200).json({ status: 'success', msg: 'Congrats you are signed up' })
@@ -95,6 +73,33 @@ router.post("/signup", async (req, res) => {
     res.status(500).json({status: "error", payload: err.message})
   }
 })
+
+
+
+
+
+
+// get all records
+router.get("/", async (req, res) => {
+  try {
+    const payload = await User.findAll();
+    res.status(200).json({ status: "nice", payload })
+  } catch (err) {
+    res.status(500).json({ status: "error", payload: err.message })
+  }
+})
+// Get one record by pk
+router.get("/:id", async (req, res) => {
+  try {
+    const payload = await User.findbyPk(req.params.id);
+    res.status(200).json({ status: "nice", payload })
+  } catch (err) {
+    res.status(500).json({ status: "error", payload: err.message })
+  }
+})
+
+
+
 
 // Update a record with a put
 router.put("/:id", async (req, res) => {

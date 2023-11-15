@@ -35,14 +35,7 @@ User.init(
       validate: {
         len: [8]
       }
-    },
-    game_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Game",
-        key: "id"
-      }
-    }    
+    } 
   },
   {
     hooks: {
@@ -55,7 +48,7 @@ User.init(
     timestamps: true,
     underscored: true,
     freezeTableName: true,
-    modelName: 'user'
+    modelName: 'User'
   }
 );
 

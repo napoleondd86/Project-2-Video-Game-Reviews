@@ -50,6 +50,7 @@ router.get("/search/:searched", async (req, res) => {
   }
 })
 
+// GAME PAGE ROUTE
 router.get("/game/:id", async (req, res) => {
   try {
     const firstGame = await gameApi(req.params.id);

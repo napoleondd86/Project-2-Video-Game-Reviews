@@ -9,7 +9,7 @@ Game.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
+      unique: true
     },
     name: {
       type: DataTypes.STRING
@@ -17,15 +17,13 @@ Game.init(
     year: {
       type: DataTypes.INTEGER
     }
-
   },
-
   {
     sequelize,
     timestamps: true,
     underscored: true,
     freezeTableName: true,
-    modelName: 'game'
+    modelName: 'Game'
   }
 );
 
