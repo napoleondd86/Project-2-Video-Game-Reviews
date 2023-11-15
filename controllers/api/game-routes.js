@@ -55,6 +55,15 @@ router.get('/:id', async (req, res) => {
 // create a new Game
 router.post('/', async (req, res) => {
   try{
+    const allGamesData = await Game.findOne({
+      where: {
+        id: req.body.id,
+      }
+    })
+    if(allGamesData){
+      res.status(400).end();
+      return;
+    }
     const gameData = await Game.create(req.body);
     res.status(200).json(gameData);
   } catch (err) {
