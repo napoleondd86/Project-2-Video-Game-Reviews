@@ -14,6 +14,8 @@ const logOut = async () => {
 };
 
 document.querySelector('#logout')?.addEventListener('click', logOut);
+
+
 // This is code I found for logging out
 // async function logOut() {
 //   const response = await fetch('/api/users/logout', {

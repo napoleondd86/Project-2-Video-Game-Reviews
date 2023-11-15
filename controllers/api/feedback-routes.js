@@ -1,6 +1,38 @@
 const router = require('express').Router();
 const { User, Feedback, GameFeedback } = require('../../models');
 
+
+// create a new feedback
+router.post('/played', async (req, res) => {
+  try{
+    const playedFeedback = await Feedback.create(req.body);
+    res.status(200).json(playedFeedback);
+  } catch (err) {
+    res.status(400).json(err)
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //////////////////  JUST A TEMPLATE //////////////////////////
 ////////////////// PRETTY SURE WE DONT NEED ALL OF THESE ////////////
 

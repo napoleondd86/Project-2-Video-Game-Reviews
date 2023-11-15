@@ -10,9 +10,13 @@ Feedback.init({
     primaryKey: true,
     autoIncrement: true,
   },
+  played: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false
+  },
   review: {
     // text or string?
-    type: DataTypes.TEXT
+    type: DataTypes.STRING
   },
   game_id: {
     type: DataTypes.INTEGER,
@@ -34,7 +38,7 @@ Feedback.init({
     timestamps: true,
     underscored: true,
     freezeTableName: true,
-    modelName: 'feedback'
+    modelName: 'Feedback'
   },
 );
 

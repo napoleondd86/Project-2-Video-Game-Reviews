@@ -3,31 +3,31 @@ const User = require('./User');
 const Feedback = require('./Feedback');
 const GameFeedback = require('./GameFeedback');
 
-// User belongsTo Game
-User.belongsTo(Game, {
-  foreignKey: "game_id"
-})
-// Game have many User
-Game.hasMany(User, {
-  foreignKey: "game_id",
-  onDelete: "CASCADE",
-})
+// // User belongsTo Game
+// User.belongsTo(Game, {
+//   foreignKey: "game_id"
+// })
+// // Game have many User
+// Game.hasMany(User, {
+//   foreignKey: "game_id",
+//   onDelete: "CASCADE",
+// })
 
 // MANY - MANY OR JOIN/PIVOT TABLE
 User.belongsToMany(Game, {
   through: {
-    model: GameFeedback,
+    model: Feedback,
     unique: false
   },
-  as: 'games' 
+  as: 'gameuser' 
 })
 
-Feedback.belongsToMany(User, {
+Game.belongsToMany(User, {
   through: {
-    model: GameFeedback,
+    model: Feedback,
     unique: false
   },
-  as: 'users' 
+  as: 'usergame' 
 })
 //  END OF PIVOT TABLE
 
