@@ -1,17 +1,22 @@
 <div class="game-card">
-  <h1>Game Page</h1>
+  {{!-- <h1>Game Page</h1> --}}
   <div class="game-card-header" data-game-id={{firstGame.id}}>
-    {{firstGame.name}}
+    <h1>{{firstGame.name}}</h1>
   </div>
   <div class="game-card-body">
-    <p>
-      Release Date:
-      {{firstGame.released}}
-    </p>
-    <p>
-      Release Platforms:
-      {{firstGame.platString}}
-    </p>
+    {{firstGame.description_raw}}
+
+    <div class="small-data" >
+      <p>
+        Release Date:
+        {{firstGame.released}}
+      </p>
+      <p>
+        Release Platforms:
+        {{firstGame.platString}}
+      </p>
+    </div>
+    <p style="text-align:center">Tags: {{firstGame.tagString}}</p>
   </div>
 </div>
 <div>
