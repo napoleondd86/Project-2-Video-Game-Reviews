@@ -1,27 +1,28 @@
 <div class="game-card">
   {{!-- <h1>Game Page</h1> --}}
-  <div class="game-card-header" data-game-id={{firstGame.id}}>
-    <h1>{{firstGame.name}}</h1>
+  <div class="game-card-header" data-game-id={{currentGame.id}}>
+    <h1>{{currentGame.name}}</h1>
   </div>
   <div class="game-card-body">
-    {{firstGame.description_raw}}
+    {{currentGame.description_raw}}
 
     <div class="small-data" >
       <p>
         Release Date:
-        {{firstGame.released}}
+        {{currentGame.released}}
       </p>
       <p>
         Release Platforms:
-        {{firstGame.platString}}
+        {{currentGame.platString}}
       </p>
     </div>
-    <p style="text-align:center">Tags: {{firstGame.tagString}}</p>
+    <p style="text-align:center">Tags: {{currentGame.tagString}}</p>
   </div>
 </div>
 <div>
   <h2>Unblurred Feedback</h2>
-  <P>THIS IS WHERE WE WOULD DISPLAY THOSE CHARTS OF THE FEEDBACK WE HAVE COLLECTED THUS FAR</P>
+  <p>THIS IS WHERE WE WOULD DISPLAY THOSE CHARTS OF THE FEEDBACK WE HAVE COLLECTED THUS FAR</p>
+  {{> charts}}
 </div>
 <div>
   <h2>Your Feedback</h2>
