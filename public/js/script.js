@@ -14,7 +14,7 @@ const searchFunction = () => {
   const querySlug = query.replaceAll(" ", "-");
   console.log(querySlug);
   const currentUrl = window.location.href;
-  const searchUrl =  currentUrl + `search/${querySlug}`;
+  const searchUrl =  `https://video-game-review-eb186ee09616.herokuapp.com/search/${querySlug}`;
   // const searching = fetch(`/search/${querySlug}`, {
   //   method: 'GET',
   //   redirect: 'follow'
