@@ -14,7 +14,7 @@ const searchFunction = () => {
   const querySlug = query.replaceAll(" ", "-");
   console.log(querySlug);
   const currentUrl = window.location.href;
-  const searchUrl =  currentUrl + `search/${querySlug}`;
+  const searchUrl =  currentUrl + `/search/${querySlug}`;
   // const searching = fetch(`/search/${querySlug}`, {
   //   method: 'GET',
   //   redirect: 'follow'
