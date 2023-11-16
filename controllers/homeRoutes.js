@@ -64,36 +64,73 @@ router.get("/game/:id", async (req, res) => {
 
     let usersWhoPlayed = []
     allFeedback.map( fb => {
-      console.log(fb.user_id)
+      // console.log(fb.user_id)
       if( !usersWhoPlayed.includes(fb.user_id)) {
-        console.log("adding a user")
+        // console.log("adding a user")
         usersWhoPlayed.push(fb.user_id)
       }
     })
-    console.log( "users", usersWhoPlayed.length )
+    // console.log( "users", usersWhoPlayed.length )
 
     let totalHours = {
       "0-5": 0,
-      "6-10": 0
+      "6-20": 0,
+      "21-50": 0,
+      "over 50": 0
     }
-    allFeedback.map( fb => totalHours[fb.hours] = totalHours[fb.hours] + 1 )
-    console.log("total", totalHours)
+    let ages = {
+      "under 18": 0,
+      "18-25": 0,
+      "26-35": 0,
+      "36-50": 0,
+      "over 50": 0
+    }
+    let ratings = {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    }
 
-    const colors = ['red', 'blue']
+    allFeedback.map( fb => totalHours[fb.hours] = totalHours[fb.hours] + 1 );
+    allFeedback.map( fb => ages[fb.age] = ages[fb.age] + 1 );
+    allFeedback.map( fb => ratings[fb.rating] = ratings[fb.rating] + 1 );
+    // Array of reviews
+    const allReviews = allFeedback.map( fb => fb.review);
+    console.log(allReviews)
+    console.log(typeof(allReviews))
+    // console.log("total", totalHours)
 
-    const hoursArr = Object.keys(totalHours)
-    const valuesArr = Object.values(totalHours)
-    const colorsArr = colors.slice(0, hoursArr.length)
+    const colors = ['#8921C2', '#fe39a4', '#fffdbb', '#53e8d4', '#25c4f8']
+  
+    const agesArr = Object.keys(ages);
+    const agesValuesArr = Object.values(ages);
+    const agesColorsArr = colors.slice(0, agesArr.length);
+    const hoursArr = Object.keys(totalHours);
+    const valuesArr = Object.values(totalHours);
+    const colorsArr = colors.slice(0, hoursArr.length);
 
-    console.log(hoursArr.toString())
-    console.log(valuesArr.toString())
-    console.log(colorsArr.toString())
+    const ratingsArr = Object.keys(ratings);
+    const ratingsValuesArr = Object.values(totalHours);
+    // const ratcolorsArr = colors.slice(0, hoursArr.length);
+
+    // console.log(hoursArr.toString())
+    // console.log(valuesArr.toString())
+    // console.log(colorsArr.toString())
 
     // const firstGame = gameList[0];
     res.render("game", {
-      labels: hoursArr,
-      data: valuesArr,
-      colors: colorsArr,
+      labels: JSON.stringify(hoursArr),
+      data: JSON.stringify(valuesArr),
+      colors: JSON.stringify(colorsArr),
+      ageslabels: JSON.stringify(agesArr),
+      agesdata: JSON.stringify(agesValuesArr),
+      agescolors: JSON.stringify(agesColorsArr),
+      ratingslabels: JSON.stringify(ratingsArr),
+      ratingsdata: JSON.stringify(ratingsValuesArr),
+      // reviews: JSON.stringify(allReviews),
+      reviews: allReviews,
       currentGame, 
       loggedIn: req.session?.loggedIn
     } )

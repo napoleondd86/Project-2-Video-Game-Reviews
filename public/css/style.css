@@ -33,6 +33,14 @@ colors {
 
 }
 
+h3 {
+  color: #25c4f8;
+  text-align: center;
+  border-bottom: 2px solid #fffdbb;
+}
+
+
+
 .btn-outline-success {
   color: #53e8d4;
   border-color: #53e8d4;
