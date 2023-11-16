@@ -2,7 +2,7 @@ const { Game } = require('../models');
 
 const gameData = [
   {
-    name: 'Baldurs Gate 3',
+    name: 'Baldurs Gate ',
     year: "2023"
   },
   {
