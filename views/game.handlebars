@@ -1,27 +1,28 @@
 <div class="game-card">
   {{!-- <h1>Game Page</h1> --}}
-  <div class="game-card-header" data-game-id={{firstGame.id}}>
-    <h1>{{firstGame.name}}</h1>
+  <div class="game-card-header" data-game-id={{currentGame.id}}>
+    <h1>{{currentGame.name}}</h1>
   </div>
   <div class="game-card-body">
-    {{firstGame.description_raw}}
+    {{currentGame.description_raw}}
 
     <div class="small-data" >
       <p>
         Release Date:
-        {{firstGame.released}}
+        {{currentGame.released}}
       </p>
       <p>
         Release Platforms:
-        {{firstGame.platString}}
+        {{currentGame.platString}}
       </p>
     </div>
-    <p style="text-align:center">Tags: {{firstGame.tagString}}</p>
+    <p style="text-align:center">Tags: {{currentGame.tagString}}</p>
   </div>
 </div>
 <div>
   <h2>Unblurred Feedback</h2>
-  <P>THIS IS WHERE WE WOULD DISPLAY THOSE CHARTS OF THE FEEDBACK WE HAVE COLLECTED THUS FAR</P>
+  <p>THIS IS WHERE WE WOULD DISPLAY THOSE CHARTS OF THE FEEDBACK WE HAVE COLLECTED THUS FAR</p>
+  {{> charts}}
 </div>
 <div>
   <h2>Your Feedback</h2>
@@ -32,14 +33,12 @@
   <span id="rateMe3"  class="rating-faces"></span>
 </div> --}}
   <h2>Review</h2>
-  <div class="played-form">
-    <form>
-      <input type="checkbox" id="played" name="played" value="true">
+  <div >
+    <form class="played-form">
+      <input type="radio" id="played" name="played" value="true">
       <label for="played">Have Played</label><br>
-      <input type="checkbox" id="want-play" name="played" value="true">
-      <label for="want-play">Want to Play</label><br>  
-      <input id='playedSubmit' type="click" value="Submit">
-      <input type="reset" value="Reset">   
+      <input type="radio" id="want-play" name="played" value="true">
+      <label for="want-play">Want to Play</label><br>        
     </form>
   </div>
 
@@ -47,15 +46,15 @@
 
 
 
-  <form action="" class="review-options-form">
-    <div>
+  <form action="" id="review-options-form" style="display: none">
+    <div class="rating">
       <h3>Rate Number of 🐐</h3>
     
         <label for="quantity">(between 1 and 5):</label>
         <input type="number" id="quantity" name="quantity" min="1" max="5">
       
     </div>
-    <div>
+    <div class="hours">
       <h3>Hours Played:</h3>
     
         <input type="radio" id="<5" name="hours" value="dabbled">
@@ -68,7 +67,7 @@
         <label for="extreme">Over 50</label>
       
     </div>
-    <div>
+    <div class="age">
       <h3>Age Range</h3>
         <input type="radio" id="<18" name="age" value="under-18">
         <label for="<18>">Under 18</label><br>
@@ -81,14 +80,15 @@
         <input type="radio" id=">50" name="age" value="over-50">
         <label for=">50">Over 50</label>
     </div>
-    <div>
+    <div class="review">
       <h3>Review</h3>
-      <input type="text" name="review" value="">
+      <input type="text" name="review" >
       <label for="review">Tell us what you think:</label>
     </div>
-    <input type="submit" value="Submit">
-    <input type="reset" value="Reset">
+   
   </form>
+   <input id='playedSubmit' type="submit" value="Submit">
+      <input type="reset" value="Reset">  
   <P>THIS IS YOUR FEEDBACK ON THIS GAME</P>
   {{else}}
   <p>LOG IN TO SEE YOU FEEDBACK</p>

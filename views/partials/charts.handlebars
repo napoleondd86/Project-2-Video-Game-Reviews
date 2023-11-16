@@ -1,0 +1,63 @@
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+  <!-- where you want the charts to go -->
+  <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+  <canvas id="myChart2" style="width:100%;max-width:700px"></canvas>
+  <canvas id="myChart3" style="width:100%;max-width:700px"></canvas>
+  <canvas id="myChart4" style="width:100%;max-width:700px"></canvas>
+
+   <script>
+    /*
+    let sampleData = {
+      fortnite: {
+        name: 'fortnite',
+        console: 'ps5',
+        price: 35
+      },
+      cod: {
+        name: 'cod',
+        console: 'ps5',
+        price: 83
+      },
+      apex: {
+        name: 'apex',
+        console: 'ps5',
+        price: 23
+      },
+      madden: {
+        name: 'madden',
+        console: 'ps5',
+        price: 70
+      }
+    }
+    */
+
+
+    //PIE
+    let myChart = document.getElementById('myChart').getContext('2d');
+    let hoursPlayed = new Chart(myChart, {
+      type: 'pie',      //can change to bar/pie/doughnut/line/etc.
+      data: {
+        labels: \{{labels}},
+        datasets: [{
+          label: 'Hours Played',
+          data: \{{data}},
+          backgroundColor: \{{colors}}
+        }],
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Pie',
+          fontSize: 25
+        },
+        legend: {
+          position: 'right',
+        }
+      }
+    })
+
+   
+    
+  </script>
+

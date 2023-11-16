@@ -53,10 +53,50 @@ router.get("/search/:searched", async (req, res) => {
 // GAME PAGE ROUTE
 router.get("/game/:id", async (req, res) => {
   try {
-    const firstGame = await gameApi(req.params.id);
-    console.log(firstGame)
+    const currentGame = await gameApi(req.params.id);
+    //console.log(currentGame)
+
+    const allFeedback = await Feedback.findAll({
+      where:{
+        game_id: req.params.id
+      }
+    })
+
+    let usersWhoPlayed = []
+    allFeedback.map( fb => {
+      console.log(fb.user_id)
+      if( !usersWhoPlayed.includes(fb.user_id)) {
+        console.log("adding a user")
+        usersWhoPlayed.push(fb.user_id)
+      }
+    })
+    console.log( "users", usersWhoPlayed.length )
+
+    let totalHours = {
+      "0-5": 0,
+      "6-10": 0
+    }
+    allFeedback.map( fb => totalHours[fb.hours] = totalHours[fb.hours] + 1 )
+    console.log("total", totalHours)
+
+    const colors = ['red', 'blue']
+
+    const hoursArr = Object.keys(totalHours)
+    const valuesArr = Object.values(totalHours)
+    const colorsArr = colors.slice(0, hoursArr.length)
+
+    console.log(hoursArr.toString())
+    console.log(valuesArr.toString())
+    console.log(colorsArr.toString())
+
     // const firstGame = gameList[0];
-    res.render("game", {firstGame, loggedIn: req.session?.loggedIn} )
+    res.render("game", {
+      labels: hoursArr,
+      data: valuesArr,
+      colors: colorsArr,
+      currentGame, 
+      loggedIn: req.session?.loggedIn
+    } )
   } catch (err) {
     res.status(500).json({ status: "error", payload: err.message })
   }

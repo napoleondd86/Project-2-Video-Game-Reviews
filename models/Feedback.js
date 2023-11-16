@@ -31,7 +31,19 @@ Feedback.init({
       model: 'User',
       key: 'id'
     },
-  }
+  },
+  hours: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  rating: {
+    type: DataTypes.INTEGER,
+    allowNull: true
+  },
+  age: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
 },
   {
     sequelize,

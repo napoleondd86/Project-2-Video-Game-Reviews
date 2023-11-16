@@ -5,8 +5,13 @@ const { User, Feedback, GameFeedback } = require('../../models');
 // create a new feedback
 router.post('/played', async (req, res) => {
   try{
-    const playedFeedback = await Feedback.create(req.body);
-    res.status(200).json(playedFeedback);
+    const userId = await req.session.user_id;
+    const newData = {
+      ...req.body,
+      user_id: userId
+    }
+    const playedFeedback = await Feedback.create(newData);
+    res.status(200).json(newData);
   } catch (err) {
     res.status(400).json(err)
   }
