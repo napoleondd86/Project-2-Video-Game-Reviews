@@ -1,63 +1,133 @@
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
-  <!-- where you want the charts to go -->
-  <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-  <canvas id="myChart2" style="width:100%;max-width:700px"></canvas>
-  <canvas id="myChart3" style="width:100%;max-width:700px"></canvas>
-  <canvas id="myChart4" style="width:100%;max-width:700px"></canvas>
+<!-- where you want the charts to go -->
+<canvas id="myChart3" style="width:100%;max-width:700px"></canvas><br>
+<canvas id="myChart" style="width:100%;max-width:700px"></canvas><br>
+<canvas id="myChart2" style="width:100%;max-width:700px"></canvas><br>
+{{!-- <canvas id="myChart4" style="width:100%;max-width:700px"></canvas> --}}
 
-   <script>
-    /*
-    let sampleData = {
-      fortnite: {
-        name: 'fortnite',
-        console: 'ps5',
-        price: 35
+{{!-- --}}
+<script>
+  //BAR
+
+  let myChart3 = document.getElementById('myChart3').getContext('2d');
+  let ratingslabels = JSON.parse('{{{ratingslabels}}}');
+  let ratingsdata = JSON.parse('{{{ratingsdata}}}');
+  
+
+  let ratingsChart = new Chart(myChart3, {
+    type: 'bar',      //can change to bar/pie/doughnut/line/etc.
+    data: {
+      labels: ratingslabels,
+      datasets: [{
+        label: 'Ratings',
+        data: ratingsdata,
+        backgroundColor: '#25c4f8',
+      }],
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Ratings',
+        fontSize: 25
       },
-      cod: {
-        name: 'cod',
-        console: 'ps5',
-        price: 83
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
       },
-      apex: {
-        name: 'apex',
-        console: 'ps5',
-        price: 23
-      },
-      madden: {
-        name: 'madden',
-        console: 'ps5',
-        price: 70
+      legend: {
+        position: 'right',
       }
     }
-    */
+  })
 
+  // HOURS PIE CHART 
+  let myChart = document.getElementById('myChart').getContext('2d');
+  // Parse JSON strings back into arrays
+  let labels = JSON.parse('{{{labels}}}');
+  let data = JSON.parse('{{{data}}}');
+  let backgroundColor = JSON.parse('{{{colors}}}');
 
-    //PIE
-    let myChart = document.getElementById('myChart').getContext('2d');
-    let hoursPlayed = new Chart(myChart, {
-      type: 'pie',      //can change to bar/pie/doughnut/line/etc.
-      data: {
-        labels: \{{labels}},
-        datasets: [{
-          label: 'Hours Played',
-          data: \{{data}},
-          backgroundColor: \{{colors}}
-        }],
+  let hoursPlayed = new Chart(myChart, {
+    type: 'pie',      //can change to bar/pie/doughnut/line/etc.
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Hours Played',
+        data: data,
+        backgroundColor: backgroundColor
+      }],
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Hours Played',
+        fontSize: 25
       },
-      options: {
-        title: {
-          display: true,
-          text: 'Pie',
-          fontSize: 25
-        },
-        legend: {
-          position: 'right',
-        }
+      legend: {
+        position: 'right',
       }
-    })
+    }
+  })
 
-   
-    
-  </script>
+  // AGES PIE CHART
+  let myChart2 = document.getElementById('myChart2').getContext('2d');
+  // Parse JSON strings back into arrays
+  let ageslabels = JSON.parse('{{{ageslabels}}}');
+  let agesdata = JSON.parse('{{{agesdata}}}');
+  let agesbackgroundColor = JSON.parse('{{{agescolors}}}');
 
+  let agesPlayed = new Chart(myChart2, {
+    type: 'pie',      //can change to bar/pie/doughnut/line/etc.
+    data: {
+      labels: ageslabels,
+      datasets: [{
+        label: 'Ages Who Played',
+        data: agesdata,
+        backgroundColor: agesbackgroundColor
+      }],
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Ages Who Played',
+        fontSize: 25
+      },
+      legend: {
+        position: 'right',
+      }
+    }
+  })
+
+</script>
+
+{{!-- AGES PIE CHART --}}
+
+
+{{!--
+let sampleData = {
+fortnite: {
+name: 'fortnite',
+console: 'ps5',
+price: 35
+},
+cod: {
+name: 'cod',
+console: 'ps5',
+price: 83
+},
+apex: {
+name: 'apex',
+console: 'ps5',
+price: 23
+},
+madden: {
+name: 'madden',
+console: 'ps5',
+price: 70
+}
+}
+--}}

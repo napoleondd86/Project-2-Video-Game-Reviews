@@ -21,11 +21,12 @@
 </div>
 <div>
   <h2>Unblurred Feedback</h2>
-  <p>THIS IS WHERE WE WOULD DISPLAY THOSE CHARTS OF THE FEEDBACK WE HAVE COLLECTED THUS FAR</p>
+ 
   {{> charts}}
+  {{> reviews}}
 </div>
 <div>
-  <h2>Your Feedback</h2>
+  {{!-- <h2>Your Feedback</h2> --}}
   {{!-- DISPLAY USER FEEDBACK --}}
   {{!-- NEED TO DO ROUTES TO "CRUD" USER'S PERSONAL FEEDBACK --}}
   {{#if loggedIn}}
@@ -48,7 +49,7 @@
 
   <form action="" id="review-options-form" style="display: none">
     <div class="rating">
-      <h3>Rate Number of 🐐</h3>
+      <h3>Rate Number of ⭐</h3>
     
         <label for="quantity">(between 1 and 5):</label>
         <input type="number" id="quantity" name="quantity" min="1" max="5">
@@ -57,27 +58,27 @@
     <div class="hours">
       <h3>Hours Played:</h3>
     
-        <input type="radio" id="<5" name="hours" value="dabbled">
+        <input type="radio" id="0-5" name="hours" value="0-5">
         <label for="dabbled">5 Hours or Less</label><br>
-        <input type="radio" id="5to20" name="hours" value="some">
-        <label for="some">5 to 20</label><br>
-        <input type="radio" id="20to50" name="hours" value="lots">
-        <label for="lots">20 to 50</label><br>
-        <input type="radio" id=">50" name="hours" value="extreme">
+        <input type="radio" id="6-20" name="hours" value="6-20">
+        <label for="some">6 to 20</label><br>
+        <input type="radio" id="21-50" name="hours" value="21-50">
+        <label for="lots">21 to 50</label><br>
+        <input type="radio" id="over 50" name="hours" value="over 50">
         <label for="extreme">Over 50</label>
       
     </div>
     <div class="age">
       <h3>Age Range</h3>
-        <input type="radio" id="<18" name="age" value="under-18">
+        <input type="radio" id="under 18" name="ages" value="under 18">
         <label for="<18>">Under 18</label><br>
-        <input type="radio" id="18to25" name="age" value="18-25">
+        <input type="radio" id="18-25" name="ages" value="18-25">
         <label for="18to25">18 to 25</label><br>
-        <input type="radio" id="26to35" name="age" value="26-35">
+        <input type="radio" id="26-35" name="ages" value="26-35">
         <label for="26to35">26 to 35</label><br>
-        <input type="radio" id="36to50" name="age" value="36-50">
+        <input type="radio" id="36-50" name="ages" value="36-50">
         <label for="36to50">36 to 50</label><br>
-        <input type="radio" id=">50" name="age" value="over-50">
+        <input type="radio" id="over 50" name="ages" value="over 50">
         <label for=">50">Over 50</label>
     </div>
     <div class="review">
@@ -89,7 +90,7 @@
   </form>
    <input id='playedSubmit' type="submit" value="Submit">
       <input type="reset" value="Reset">  
-  <P>THIS IS YOUR FEEDBACK ON THIS GAME</P>
+
   {{else}}
   <p>LOG IN TO SEE YOU FEEDBACK</p>
   {{/if}}

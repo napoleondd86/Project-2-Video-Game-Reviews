@@ -43,7 +43,7 @@ const playedFeedback = async (event) => {
     const rating = document.querySelector("#quantity").value;
     const hoursArray = Array.from(document.querySelectorAll("[name='hours']"));
     const hours = hoursArray.find(hour => hour.checked).value;
-    const ageArr = Array.from(document.querySelectorAll("[name='age']"));
+    const ageArr = Array.from(document.querySelectorAll("[name='ages']"));
     const age = ageArr.find(age => age.checked).value;
     const review = document.querySelector("[name='review']").value;
     feedbackData = { rating, hours, age, review }
