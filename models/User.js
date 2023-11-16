@@ -24,7 +24,7 @@ User.init(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: false,
       validate: {
         isEmail: true,
       },
@@ -35,7 +35,7 @@ User.init(
       validate: {
         len: [8]
       }
-    } 
+    }
   },
   {
     hooks: {
