@@ -13,12 +13,13 @@ const searchFunction = () => {
   console.log(query);
   const querySlug = query.replaceAll(" ", "-");
   console.log(querySlug);
-  const url =  `http://localhost:3001/search/${querySlug}`;
+  const currentUrl = window.location.href;
+  const searchUrl =  currentUrl + `/search/${querySlug}`;
   // const searching = fetch(`/search/${querySlug}`, {
   //   method: 'GET',
   //   redirect: 'follow'
   // })
-  window.location.href = url;
+  window.location.href = searchUrl;
 
 }
 
