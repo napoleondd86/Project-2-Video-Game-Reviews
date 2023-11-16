@@ -32,7 +32,7 @@ search.addEventListener("submit", (event) => {
 // FORM PLAY FEEDBACK 
 const playedData = document.querySelector(".played-form");
 const playedCheckbox = document.querySelector("#played");
-const wantToPlayCheckbox = document.querySelector("#want-play");
+// const wantToPlayCheckbox = document.querySelector("#want-play");
 
 const playedFeedback = async (event) => {
   event.preventDefault();
@@ -57,10 +57,10 @@ const playedFeedback = async (event) => {
   })
   
  
-  const want_play = wantToPlayCheckbox.checked;
+  // const want_play = wantToPlayCheckbox.checked;
 
- 
-  if (!played && !want_play) return
+//  && !want_play was in below
+  if (!played ) return
   const response = await fetch('/api/feedbacks/played', {
     method: 'POST',
     body: JSON.stringify({played, game_id: gameId, ...feedbackData}),
@@ -84,8 +84,10 @@ const togglePlayed = (event) => {
   // } else {
   //   alert(result);//// RESULT.PAYLOAD -- ALSO WOULDNT BE AN ALERT
   // }
-playedSubmit.addEventListener("click", playedFeedback);
-playedData.addEventListener("change", togglePlayed)
+playedSubmit?.addEventListener("click", playedFeedback);
+playedData?.addEventListener("change", togglePlayed)
+// document.querySelector('.played-form')?.addEventListener("change", togglePlayed);
+
 // Rating Initialization
 // $(document).ready(function() {
 //   $('#rateMe3').mdbRate();

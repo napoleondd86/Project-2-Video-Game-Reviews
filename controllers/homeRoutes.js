@@ -95,7 +95,7 @@ router.get("/game/:id", async (req, res) => {
 
     allFeedback.map( fb => totalHours[fb.hours] = totalHours[fb.hours] + 1 );
     allFeedback.map( fb => ages[fb.age] = ages[fb.age] + 1 );
-    allFeedback.map( fb => ratings[fb.rating] = ratings[fb.rating] + 1 );
+    allFeedback.map( fb => ratings[fb.rating ] = ratings[fb.rating] + 1 );
     // Array of reviews
     const allReviews = allFeedback.map( fb => fb.review);
     console.log(allReviews)
