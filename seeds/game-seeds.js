@@ -2,24 +2,25 @@ const { Game } = require('../models');
 
 const gameData = [
   {
-    name: 'Baldurs Gate ',
-    year: "2023"
+    // civilization
+    id: '52803'
+
   },
   {
-    name: 'Final Fantasy 1',
-    year: "2000"
+    //  494393 Monster Hunter
+    id: '494393'
   },
   {
-    name: 'SaleBlazers',
-    year: "2022"
+    // name: 'Victoia',
+    id: '246168'
   },
   {
-    name: 'World of Warcraft',
-    year: "2005"
+    // name: Fall Guys
+    id: '326292'
   },
   {
-    name: 'Grand Theft Auto V',
-    year: "2021"
+    // name:Halo(wrong one)
+    id: '609130'
   },
 ];
 
