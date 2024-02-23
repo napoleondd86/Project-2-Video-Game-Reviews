@@ -3,7 +3,7 @@
 // var searchSlug = search.replaceAll(" ", "-");
 async function searchApi(query) {
   const resultsArray = [];
-  const response = await fetch(`https://api.rawg.io/api/games?key=bd8ac961089f4fb694db12c2ad50dfcb&search=${query}`)
+  const response = await fetch(`https://api.rawg.io/api/games?key=b9665e7696514246a090a257935f9dfd&search=${query}`)
   const data = await response.json()
 
     var results = data.results;
